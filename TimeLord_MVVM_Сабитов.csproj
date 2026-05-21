@@ -57,6 +57,7 @@
     </ApplicationDefinition>
     <Compile Include="Models\Stopwatch.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
+    <Compile Include="ViewModels\VMStopwatch.cs" />
     <Compile Include="Views\Main.xaml.cs">
       <DependentUpon>Main.xaml</DependentUpon>
     </Compile>
