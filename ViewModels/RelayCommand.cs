@@ -23,6 +23,11 @@ namespace TimeLord_MVVM_Сабитов.ViewModels
             _execute = execute;
             _canExecute = canExecute;
         }
+        public RelayCommand(Action<object> execute)
+        {
+            _execute = execute;
+        }
+
 
         public bool CanExecute(object parameter)
         {
