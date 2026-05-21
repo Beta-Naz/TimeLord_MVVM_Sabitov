@@ -26,7 +26,7 @@ namespace TimeLord_MVVM_Сабитов.Models
                 return _startTimer ??
                     (_startTimer = new RelayCommand(obj =>
                     {
-                        if (Work == false)
+                        if (!Work)
                         {
                             Interval.Clear();
                             Time = 0;
@@ -56,6 +56,18 @@ namespace TimeLord_MVVM_Сабитов.Models
                     }));
             }
         }
+        private RelayCommand _goToTimer;
+        public RelayCommand GoToTimer
+        {
+            get
+            {
+                return _goToTimer ??
+                    (_goToTimer = new RelayCommand(obj =>
+                    {
+                        MainWindow.Instance.OpenPage(new Views.Timer());
+                    }));
+            }
+        }
         public ObservableCollection<string> Interval {get; set;}
         public Stopwatch()
         {
@@ -74,7 +86,7 @@ namespace TimeLord_MVVM_Сабитов.Models
         {
             get
             {
-                float hour = Time / 360f;
+                float hour = Time / 3600f;
                 float minute = Time / 60f - (int)hour * 60f;
                 float second = Time - (int)hour * 360f - (int)minute * 60f;
                 string sHour = ((int)hour).ToString();
@@ -83,7 +95,7 @@ namespace TimeLord_MVVM_Сабитов.Models
                 if(hour < 10) sHour = "0" + sHour;
                 if (minute < 10) sMinute = "0" + sMinute;
                 if (second < 10) sSecond = "0" + sSecond;
-                return $"{sHour}:{sMinute}:{sMinute}";
+                return $"{sHour}:{sMinute}:{sSecond}";
             }
         }
         private string _textButton = "Начать";
